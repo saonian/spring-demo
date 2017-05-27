@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:config/*-${env}.properties" file-encoding="UTF-8" ignore-resource-not-found="false"/>
+
+    <context:component-scan base-package="com.liukai.test.service" />
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <!-- 基本属性 url、user、password -->
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+
+        <!-- 初始化连接数 -->
+        <property name="initialSize" value="${jdbc.initialSize}" />
+        <!-- 最小空闲连接数 -->
+        <property name="minIdle" value="${jdbc.minIdle}" />
+        <!-- 最大连接数 -->
+        <property name="maxActive" value="${jdbc.maxActive}" />
+        <!-- 当连接池中连接已经用完了，等待建立一个新连接的最大毫秒数 -->
+        <property name="maxWait" value="${jdbc.maxWait}" />
+        <!-- 默认值是 true ，当从连接池取连接时，验证这个连接是否有效 -->
+        <property name="testOnBorrow" value="true" />
+        <!-- 指明连接是否被空闲连接回收器(如果有)进行检验.如果检测失败,则连接将被从池中去除.注意: 设置为true后如果要生效,validationQuery参数必须设置为非空字符串 -->
+        <property name="testWhileIdle" value="true" />
+        <!-- 默认值是 flase, 当从把该连接放回到连接池的时，验证这个连接是否有效 -->
+        <property name="testOnReturn" value="false" />
+        <!--用来验证从连接池取出的连接,在将连接返回给调用者之前.如果指定,则查询必须是一个SQL SELECT并且必须返回至少一行记录-->
+        <property name="validationQuery" value="SELECT 'x'" />
+        <!-- 连接池中连接可空闲的时间 单位毫秒 30分钟 -->
+        <property name="minEvictableIdleTimeMillis" value="1800000" />
+        <property name="removeAbandoned" value="true" />
+        <property name="removeAbandonedTimeout" value="10000" />
+        <!-- 间隔多久才进行一次检测，检测需要关闭的空闲连接，单位毫秒，10分钟 -->
+        <property name="timeBetweenEvictionRunsMillis" value="600000" />
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="false" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+    </bean>
+
+    <import resource="classpath:mybatis/mybatis-spring-config.xml"/>
+
+</beans>
