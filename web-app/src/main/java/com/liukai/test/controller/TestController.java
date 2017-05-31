@@ -1,9 +1,8 @@
 package com.liukai.test.controller;
 
+import com.alibaba.dubbo.config.annotation.DubboReference;
 import com.liukai.test.dto.TestDto;
 import com.liukai.test.interfaces.TestService;
-import com.liukai.test.service.TestServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +15,7 @@ import java.util.List;
 @Controller
 public class TestController {
 
-    @Autowired
+    @DubboReference
     private TestService testService;
 
     @RequestMapping(path = "/test", method = RequestMethod.GET)

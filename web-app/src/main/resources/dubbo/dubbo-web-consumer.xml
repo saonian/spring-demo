@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">       
+    <!-- 消费方应用名称，不能重名，不能跟服务提供方同名 -->  
+    <dubbo:application name="ros-web" logger="slf4j" />
+
+    <dubbo:consumer timeout="${dubbo.consumer.timeout}" loadbalance="random" retries="0" check="true"/>
+
+	<!-- 注册中心 -->  
+    <dubbo:registry address="${dubbo.registry.address}" />
+
+</beans>

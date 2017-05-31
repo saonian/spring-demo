@@ -14,7 +14,12 @@
     <dependencies>
         <dependency>
             <groupId>com.liukai</groupId>
-            <artifactId>web-service</artifactId>
+            <artifactId>web-dto</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.liukai</groupId>
+            <artifactId>web-interface</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
@@ -76,6 +81,20 @@
         <dependency>
             <groupId>com.atg</groupId>
             <artifactId>json-taglib</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
         </dependency>
 
         <dependency>

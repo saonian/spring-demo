@@ -45,4 +45,6 @@
 
     <import resource="classpath:mybatis/mybatis-spring-config.xml"/>
 
+    <import resource="classpath:dubbo/dubbo-service-provider.xml"/>
+
 </beans>

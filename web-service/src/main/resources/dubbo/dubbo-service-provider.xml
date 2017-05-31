@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+       default-lazy-init="false">
+
+    <!-- 服务提供方的应用名称 -->
+    <dubbo:application name="ros-service" logger="slf4j"/>
+
+    <!-- zookeeper注册中心 -->
+    <dubbo:registry address="${dubbo.registry.address}" check="false" subscribe="false" register="" file="${dubbo.registry.file}"/>
+
+    <dubbo:protocol port="${dubbo.protoco.port}"/>
+    <!-- Spring容器初始化完成时暴露服务，调用超时3秒，不重试，负载均衡最不活跃优先 -->
+    <dubbo:provider timeout="${dubbo.provider.timeout}" loadbalance="random" retries="0" delay="-1"/>
+
+    <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
+    <dubbo:annotation package="com.liukai.test.service" />
+
+</beans>

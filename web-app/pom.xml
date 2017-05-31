@@ -14,7 +14,12 @@
     <dependencies>
         <dependency>
             <groupId>com.liukai</groupId>
-            <artifactId>web-service</artifactId>
+            <artifactId>web-dto</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.liukai</groupId>
+            <artifactId>web-interface</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
@@ -38,6 +43,20 @@
         <dependency>
             <groupId>com.atg</groupId>
             <artifactId>json-taglib</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
         </dependency>
 
         <dependency>
@@ -76,5 +95,26 @@
 
     <build>
         <finalName>web-app</finalName>
+
+        <resources>
+            <resource><!-- 存放配置文件到target/classes目录下 -->
+                <targetPath>${project.build.outputDirectory}</targetPath>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering><!--true表示需要替换掉占位符-->
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>i18n/*.properties</include>
+                    <include>**/log4j.properties</include>
+                </includes>
+            </resource>
+
+            <resource><!-- 存放按环境区分的不同配置 -->
+                <targetPath>${project.build.outputDirectory}/config</targetPath>
+                <directory>src/main/resources/config/</directory>
+                <includes>
+                    <include>**/*-${env}.properties</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>

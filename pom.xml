@@ -12,6 +12,8 @@
     <modules>
         <module>web-app</module>
         <module>web-service</module>
+        <module>web-interface</module>
+        <module>web-dto</module>
     </modules>
 
     <properties>
@@ -23,6 +25,10 @@
         <druid.version>1.0.19</druid.version>
         <fastjson.version>1.2.11</fastjson.version>
         <json-taglib.version>0.4.1</json-taglib.version>
+        <dubbo.version>2.8.4</dubbo.version>
+        <zookeeper.version>3.4.6</zookeeper.version>
+        <zkclient.version>0.1</zkclient.version>
+        <hessian.version>4.0.7</hessian.version>
         <slf4j-api>1.7.7</slf4j-api>
         <slf4j-log4j.version>1.7.16</slf4j-log4j.version>
         <org.mybatis.mybatis>3.4.0</org.mybatis.mybatis>
@@ -118,6 +124,35 @@
                 <groupId>com.atg</groupId>
                 <artifactId>json-taglib</artifactId>
                 <version>${json-taglib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>${hessian.version}</version>
             </dependency>
 
             <dependency>
