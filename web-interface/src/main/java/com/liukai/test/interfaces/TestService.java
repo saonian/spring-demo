@@ -9,5 +9,11 @@ import java.util.List;
  */
 public interface TestService {
 
+    TestDto find(int id);
+
     List<TestDto> getList();
+
+    boolean save(TestDto testDto);
+
+    boolean delete(int id);
 }

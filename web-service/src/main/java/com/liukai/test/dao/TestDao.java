@@ -10,5 +10,13 @@ import java.util.List;
  */
 public interface TestDao {
 
+    TestDto find(int id) throws DaoException;
+
     List<TestDto> getList() throws DaoException;
+
+    boolean insert(TestDto testDto) throws DaoException;
+
+    boolean update(TestDto testDto) throws DaoException;
+
+    boolean delete(int id) throws DaoException;
 }

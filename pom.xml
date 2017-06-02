@@ -22,6 +22,8 @@
         <aspectjweaver.version>1.8.8</aspectjweaver.version>
         <aspectj.version>1.5.4</aspectj.version>
         <cglib.version>3.2.4</cglib.version>
+        <hibernate-validator.version>5.3.0.Alpha1</hibernate-validator.version>
+        <validator-api.version>1.1.0.Final</validator-api.version>
         <druid.version>1.0.19</druid.version>
         <fastjson.version>1.2.11</fastjson.version>
         <json-taglib.version>0.4.1</json-taglib.version>
@@ -92,6 +94,17 @@
                 <groupId>cglib</groupId>
                 <artifactId>cglib</artifactId>
                 <version>${cglib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validator-api.version}</version>
             </dependency>
 
             <dependency>

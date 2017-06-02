@@ -2,8 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.liukai.test.dao.TestDao">
 
-    <select id="getList" resultType="TestDto">
-        SELECT * FROM co_content LIMIT 5
+    <select id="find" parameterType="int" resultType="TestDto">
+        SELECT * FROM co_content WHERE id = #{id}
     </select>
+
+    <select id="getList" resultType="TestDto">
+        SELECT * FROM co_content ORDER BY id DESC LIMIT 5
+    </select>
+
+    <insert id="insert" parameterType="TestDto" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO co_content(
+        id,
+        title,
+        contents
+        )
+        VALUES (
+        #{id},
+        #{title},
+        #{contents}
+        )
+        ]]>
+    </insert>
+
+    <update id="update" parameterType="TestDto">
+        UPDATE co_content
+        <set>
+            <if test="null != title and '' != title">
+                title = #{title},
+            </if>
+            <if test="null != contents and '' != contents">
+                contents = #{contents},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        <![CDATA[
+        DELETE FROM co_content WHERE id = #{id}
+        ]]>
+    </delete>
 
 </mapper>

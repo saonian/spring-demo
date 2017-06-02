@@ -18,7 +18,22 @@ public class TestServiceImpl implements TestService {
     private TestDao testDao;
 
     @Override
+    public TestDto find(int id) {
+        return testDao.find(id);
+    }
+
+    @Override
     public List<TestDto> getList() {
         return testDao.getList();
+    }
+
+    @Override
+    public boolean save(TestDto testDto) {
+        return testDto.getId() == 0 ? testDao.insert(testDto) : testDao.update(testDto);
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return testDao.delete(id);
     }
 }
